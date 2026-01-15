@@ -105,7 +105,7 @@ class temp_rsfmri():
     def voxel_spec_skewness(self, data, low=0.01, high=0.08):
         return _voxel_spec_skewness(data,self.tr,low,high)
     
-############## Statistical testing from rsfmri_methods.py ###########################   
+############## Statistical testing from rsfmri_statstest .py ###########################   
     def welch_ttest(self,x,y):
         return _welch_ttest(x, y)
     
@@ -136,13 +136,15 @@ class temp_rsfmri():
         return _pval_percent(p_val,atlas, standard_mask = self.standard_mask)
     
     def region_perm_test(self, mtd_lis, atlas, remove_csf = None, scale = None,
-                          nsim = 5_000, test_stat = None, *args, **kwargs):
+                          nsim = 5_000, test_stat = None, control = None, *args, **kwargs):
         remove_csf = self.regress_csf if remove_csf is None else remove_csf
         scale = self.remove_scale if scale is None else scale
         test_stat = self.welch_ttest if test_stat is None else test_stat
         t_stat, p_val, z_score = _region_perm_test(mtd_lis, atlas, self.control_datalis, self.disease_datalis,
                                                   remove_csf, scale, self.standard_mask, self.dtype, 
                                                   nsim, test_stat, *args, **kwargs)
+        if control is not None:
+            p_val = multipletests(p_val,method=control)[1]
         return t_stat, p_val, z_score
         
     
