@@ -24,7 +24,7 @@ from rsfmri_statstest import (_voxel_perm_test,_welch_ttest,_zmap_thres,
 from rsfmri_plotting import (_whole_3d_plot,_overlay)
 
 
-class temp_rsfmri():
+class rsfmri_RLA():
     
     def __init__(self, c_datalis = None, d_datalis =  None):
         self.shape = (91,109,91)
@@ -145,6 +145,7 @@ class temp_rsfmri():
                                                   nsim, test_stat, *args, **kwargs)
         if control is not None:
             p_val = multipletests(p_val,method=control)[1]
+            z_score = norm.isf(p_val)
         return t_stat, p_val, z_score
         
     
