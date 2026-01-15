@@ -8,7 +8,7 @@ The required dependencies to use the software are listed in the file .
 ## Getting Started
 ### Importing class
 ```{bash}
-from Draft2 import *
+from rsfmri_RLA import rsfmri_RLA
 ```
 
 ### Loading data
@@ -27,7 +27,7 @@ This library can only do addtional data processing such as removing CSF. Any oth
 1. Scaling using CSF: This scales the data to a reference value using the mean of CSF signal within the CSF voxels. 
 2. Regression of CSF: This remove the CSF noise by linear regressing the mean CSF signal out of all voxel data.
 
-If you do not require any of these methods, use `rsfmri_RLA.fmri.no_modify`.
+If you do not require any of these methods, use `rsfmri_RLA.no_modify` for any of the parameters `scale` or  `remove_csf`.
 
 ### Statistical Measures
 These methods characterise the fMRI signal using their relevant statisitcal measure. While they are named as voxel methods, they can be used for any data. They operate using array operations at `axis = -1`. Currently, there are 7 statisitcal methods.
