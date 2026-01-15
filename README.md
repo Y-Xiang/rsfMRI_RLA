@@ -6,6 +6,11 @@ WIP
 The required dependencies to use the software are listed in the file .
 
 ## Getting Started
+### Importing class
+```{bash}
+from Draft2 import *
+```
+
 ### Loading data
 The control and patient data can be loaded into the class `temp_rsfmri` through the initialisation. Using this method requires both the control and patient data to be a list of `nibabel.nifti1.Nifti1Image`. 
 ```{bash}
