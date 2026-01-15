@@ -6,6 +6,11 @@ WIP
 The required dependencies to use the software are listed in the file .
 
 ## Getting Started
+### Importing class
+```{bash}
+from Draft2 import *
+```
+
 ### Loading data
 The control and patient data can be loaded into the class `temp_rsfmri` through the initialisation. Using this method requires both the control and patient data to be a list of `nibabel.nifti1.Nifti1Image`. 
 ```{bash}
@@ -36,8 +41,25 @@ These methods characterise the fMRI signal using their relevant statisitcal meas
 7. Spectral Skewness
 
 ### Statisitcal Hypothesis Testing
-This library curretly supports 2 types of analysis: voxel-level and anatomical region-level. For both analysis, the default test statistic used is Welch's *t*-test. Permutation testing is used for the null distribution instead of the Student's *t*-test. The default multipe testing correction is done using Benjamini-Hochberg procedure as the False Discovery Rate (FDR) correction.
+This library curretly supports 2 types of analysis: voxel-level and anatomical region-level. For both analysis, the default test statistic used is Welch's *t*-test. Permutation testing is used for the null distribution instead of the Student's *t*-test. The default multipe testing correction is done using Benjamini-Hochberg procedure as the False Discovery Rate (FDR) correction. The test function returns a test-statistical map, *p*-value map, and a z-score map. The z-score is generated from the *p*-value map using inverse Cumulative Distribution Function (CDF) of the standard normal distribution. The z-score map is created to allow for easier comparision as the test-statisitcal map uses permutation testing, which result using different null distribution for each test. 
 
-
+#### Voxel level analysis
+Testing at voxel-level:
+```{bash}
+voxel_perm_test(statistical_method)
+```
+FDR correction using all valid voxels in the brain volume defined by the atlas:
+```{bash}
+zmap_thres(z_score_map)
+```
+FDR correction by regions from an atlas:
+```{bash}
+region_correction(p_val_map, atlas)
+```
+Testing at anatomical region-level, this function uses a list of statisical methods, allowing for more than 1 analysis in a single run:
+```{bash}
+region_perm_test(statistical_method_list, atlas)
+```
+To do correction for anatomical region-level analysis, define the `control` parameter. The list of valid controls are the same as the methods from `statsmodels.stats.multitest.multipletests`.
 
 
