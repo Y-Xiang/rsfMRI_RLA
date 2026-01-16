@@ -14,7 +14,7 @@ from nilearn import datasets, plotting
 from nilearn.image import math_img, threshold_img
 from nilearn.glm import threshold_stats_img
 
-from mpl_toolkits.mplot3d import Axes3D
+# from mpl_toolkits.mplot3d import Axes3D
 
 from rsfmri_dataprocess import (_no_modify,_regress_csf,_rem_scale, _csf_mean)
 from rsfmri_method import (_voxel_mean, _voxel_sd, _voxel_alff, _voxel_falff,
