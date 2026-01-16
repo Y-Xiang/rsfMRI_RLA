@@ -52,7 +52,7 @@ These methods characterise the fMRI signal using their relevant statisitcal meas
 ### Statisitcal Hypothesis Testing
 This library curretly supports 2 types of analysis: voxel-level and anatomical region-level. For both analysis, the default test statistic used is Welch's *t*-test. Permutation testing is used for the null distribution instead of the Student's *t*-test. The default multipe testing correction is done using Benjamini-Hochberg procedure as the False Discovery Rate (FDR) correction. The test function returns a test-statistical map, *p*-value map, and a z-score map. The z-score is generated from the *p*-value map using inverse Cumulative Distribution Function (CDF) of the standard normal distribution. The z-score map is created to allow for easier comparision as the test-statisitcal map uses permutation testing, which result using different null distribution for each test. 
 
-#### Voxel level analysis
+#### Voxel-level analysis
 Testing at voxel-level:
 ```{bash}
 voxel_perm_test(statistical_method)
@@ -65,6 +65,7 @@ FDR correction by regions from an atlas:
 ```{bash}
 region_correction(p_val_map, atlas)
 ```
+#### Anatomical Region-level analysis
 Testing at anatomical region-level, this function uses a list of statisical methods, allowing for more than 1 analysis in a single run:
 ```{bash}
 region_perm_test(statistical_method_list, atlas)
