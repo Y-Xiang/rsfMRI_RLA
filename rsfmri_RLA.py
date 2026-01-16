@@ -128,8 +128,8 @@ class rsfmri_RLA():
         
         if plot:
             self.whole_3d_plot(z_corrected, vmin = vmin, vmax = vmax)
-        p_val_corrected = norm.sf(z_corrected)
-        return p_val_corrected, z_corrected
+        p_corrected = norm.sf(z_corrected)
+        return p_corrected, z_corrected
     
     def region_correction(self, p_val, atlas, control = 'fdr_bh', alpha = 0.05, re_dic = False, cluster= None):
         return _region_correction(p_val, atlas, control = 'fdr_bh', alpha = 0.05, re_dic = False,
