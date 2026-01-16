@@ -50,7 +50,7 @@ voxel_perm_test(statistical_method)
 ```
 FDR correction using all valid voxels in the brain volume defined by the atlas:
 ```{bash}
-zmap_thres(z_score_map)
+whole_brain_fdr(p_val)
 ```
 FDR correction by regions from an atlas:
 ```{bash}
