@@ -66,7 +66,7 @@ FDR correction by regions from an atlas:
 region_correction(p_val_map, atlas)
 ```
 #### Anatomical Region-level analysis
-Testing at anatomical region-level, this function uses a list of statisical methods, allowing for more than 1 analysis in a single run:
+Testing at anatomical region-level (this function uses a list of statisical methods, allowing for more than 1 analysis in a single run):
 ```{bash}
 region_perm_test(statistical_method_list, atlas)
 ```
