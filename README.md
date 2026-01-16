@@ -69,6 +69,6 @@ Testing at anatomical region-level, this function uses a list of statisical meth
 ```{bash}
 region_perm_test(statistical_method_list, atlas)
 ```
-To do correction for anatomical region-level analysis, define the `control` parameter. The list of valid controls are the same as the methods from `statsmodels.stats.multitest.multipletests`.
+To do correction for anatomical region-level analysis, define the `control` parameter. The default control is `None`. The list of valid controls are the same as the methods from `statsmodels.stats.multitest.multipletests`.
 
 
