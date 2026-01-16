@@ -120,13 +120,16 @@ class rsfmri_RLA():
                                                   self.dtype, nsim, test_stat, *args, **kwargs)
         return t_stat, p_val, z_score
     
-    def zmap_thres(self,z_map, alpha = 0.05, cluster = 10, two_sided = False,
+    def whole_brain_fdr(self, p_val, alpha = 0.05, cluster = 10, two_sided = False,
                    height_control = 'fdr', plot = False, vmin = 0, vmax = 3):
+        z_map = norm.isf(p_val)
         z_corrected = _zmap_thres(z_map, alpha, cluster, self.dtype,
                                   two_sided, height_control, self.atlas)
+        
         if plot:
             self.whole_3d_plot(z_corrected, vmin = vmin, vmax = vmax)
-        return z_corrected
+        p_val_corrected = norm.sf(z_corrected)
+        return p_val_corrected, z_corrected
     
     def region_correction(self, p_val, atlas, control = 'fdr_bh', alpha = 0.05, re_dic = False, cluster= None):
         return _region_correction(p_val, atlas, control = 'fdr_bh', alpha = 0.05, re_dic = False,

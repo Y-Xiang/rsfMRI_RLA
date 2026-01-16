@@ -130,11 +130,12 @@ def _region_correction(p_val, atlas, control = 'fdr_bh', alpha = 0.05, re_dic = 
         corrected_pvals = multipletests(p_val_reg, alpha=alpha, method=control)[1]
         p_corrected[mask] = corrected_pvals
     if cluster is None:
-        return p_corrected
+        z_corrected = norm.isf(p_corrected)
+        return p_corrected, z_corrected
     z_score = norm.isf(p_corrected)
     z_cor_clust = _zmap_thres(z_score,alpha=alpha,cluster=cluster,height_control='fpr')
     p_corr_clust = norm.sf(z_cor_clust)
-    return p_corr_clust 
+    return p_corr_clust, z_cor_clust
 
 def _pval_percent(p_val,atlas = None, standard_mask = None):
     if atlas is not None:
