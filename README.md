@@ -1,9 +1,18 @@
 # rsfMRI_RLA
 rsfMRI_Region-level_Analysis
 
-## Dependencies
-WIP
-The required dependencies to use the software are listed in the file .
+## Dependencies & Version used
+* Python 3.10.18
+* numpy 2.2.6
+* pandas 2.3.1
+* sklearn 1.7.0
+* scipy 1.15.3
+* statsmodels 0.14.5
+* matplotlib 3.10.3
+* seaborn 0.13.2
+* tqdm 4.67.1
+* nibabel 5.3.2
+* nilearn 0.12.0
 
 ## Getting Started
 ### Importing class
